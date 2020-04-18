@@ -1,0 +1,60 @@
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+
+# stty
+stty intr \^x
+
+# Customize to your needs...
+VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.6
+source /usr/local/bin/virtualenvwrapper.sh
+
+
+bindkey -e
+
+# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
+
+
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias c='clear'
+
+alias s='sudo'
+
+dirsize() {
+    du -hs $* | sort -h
+}
+
+
+# Networking
+alias ports='netstat -tulanp'
+
+
+# apt
+alias sapt='sudo apt-get'
+alias sapti='sudo apt-get install'
+alias saptr='sudo apt-get remove'
+alias saptp='sudo apt-get purge'
+alias dact='newgrp docker'
+
+# idea
+alias idea='sudo snap run intellij-idea-ultimate'
+
+# supervisord
+alias sd='supervisord'
+alias sc='supervisorctl'
+alias sct='supervisorctl tail'
+
